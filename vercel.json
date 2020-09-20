@@ -4,5 +4,10 @@
       "source": "/",
       "destination": "https://github.com/sagar-gavhane/website-thumbnails"
     }
-  ]
+  ],
+  "functions": {
+    "api/index.js": {
+      "maxDuration": 60
+    }
+  }
 }
