@@ -14,8 +14,13 @@ module.exports = async (req, res) => {
 
   try {
     const url = new URL(req.query.url)
+    const chrome = require('chrome-aws-lambda');
     const puppeteer = require('puppeteer');
-    const browser = await puppeteer.launch();
+    const browser = await puppeteer.launch({
+      args: chrome.args,
+      executablePath: await chrome.executablePath,
+      headless: chrome.headless,
+  });
     const page = await browser.newPage();
     await page.goto(url);
     const capturedImage = await page.screenshot({type: 'jpeg', quality: 100, fullPage: false});
